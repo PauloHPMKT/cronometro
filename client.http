@@ -1,0 +1,6 @@
+POST http://localhost:8080/timer
+Content-Type: application/json
+
+{
+  "minutes": 1
+}

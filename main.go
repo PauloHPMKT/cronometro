@@ -2,8 +2,10 @@ package main
 
 import (
 	"fmt"
+	"log"
+	"net/http"
 
-	countdown "github.com/PauloHPMKT/cronometro/application/usecase"
+	"github.com/PauloHPMKT/cronometro/router"
 )
 
 type Timer interface {
@@ -11,20 +13,8 @@ type Timer interface {
 }
 
 func main() {
-	// Entrada do usuário
-	minutes := getUserInput()
+	router.Router()
 
-	// Criar uma instancia do cronometro
-	cronometer := countdown.NewCountdownTimer(minutes)
-
-	// Iniciar o cronometro
-	cronometer.Start()
-}
-
-func getUserInput() int {
-	defaultTime := 25
-
-	fmt.Println("Digite a quantidade de minutos: ")
-	fmt.Scan("%d", &defaultTime)
-	return defaultTime
+	fmt.Println("Server is running on http://localhost:8080")
+	log.Fatal(http.ListenAndServe(":8080", nil))
 }

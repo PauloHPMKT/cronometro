@@ -1,3 +1,4 @@
+// Essa função poderá sser utilizada no caso de uso do controller
 package countdown
 
 import (
@@ -24,6 +25,7 @@ func (t *CountdownTimer) Start() {
 		time.Sleep(1 * time.Second)
 
 		t.seconds--
+		fmt.Printf("\rTempo restante: %02d:%02d", min, sec)
 	}
 
 	fmt.Println("\rTempo esgotado!")
